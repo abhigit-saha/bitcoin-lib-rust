@@ -1,14 +1,15 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
-}
+pub mod crypto;
+pub mod sha256;
+pub mod types;
+pub mod util;
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+//not really required.
+extern crate ciborium;
+extern crate serde;
+extern crate sha256;
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+use uint::construct_uint;
+//macro_rules! macros generates this at compile time, no need to write it
+construct_uint! {
+    pub struct U256(4);
 }
